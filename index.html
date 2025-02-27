@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Remove.bg Clone</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <!-- Logo -->
+      <a href="#" class="logo">
+        <img src="data:image/png;base64,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" alt="Logo" />
+        <span>remove<span class="bg-text">bg</span></span>
+      </a>
+
+      <!-- Main Links -->
+      <ul class="nav-links">
+        <li><a href="#">Remove Background</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Features ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Feature 1</a></li>
+            <li><a href="#">Feature 2</a></li>
+            <li><a href="#">Feature 3</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">For Business ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Business 1</a></li>
+            <li><a href="#">Business 2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Pricing</a></li>
+      </ul>
+    </div>
+   
+    <!-- Right Side: Login & Sign up -->
+    <div class="navbar-right">
+      <a href="#" class="login">Log in</a>
+      <a href="#" class="signup">Sign up</a>
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="hero-content">
+      <video autoplay loop muted class="hero-video">
+        <source src="https://sb.kaleidousercontent.com/67418/x/9289c7b8dd/manuel_compressed.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-text">
+        <h1>Remove Image </h1>
+        <h1> Background</h1>
+        <p>100% Automatically and <span class="highlight">Free</span></p>
+      </div>
+    </div>
+  </section>
+  <div class="sample-images">
+    <div class="text-container">No image? <br> Try one of these:</div>
+    <div class="image-list">
+        <img src="https://static.remove.bg/uploader-examples/person/8_thumbnail.jpg" alt="Sample 1">
+        <img src="https://static.remove.bg/uploader-examples/animal/6_thumbnail.jpg" alt="Sample 2">
+        <img src="https://static.remove.bg/uploader-examples/car/6_thumbnail.jpg" alt="Sample 3">
+        <img src="https://static.remove.bg/uploader-examples/product/6_thumbnail.jpg" alt="Sample 4">
+    </div>
+    <div class="terms">
+        By uploading an image or URL you agree to our <a href="#">Terms of Service</a>. 
+        To learn more about how remove.bg handles your personal data, check our 
+        <a href="#">Privacy Policy</a>.
+    </div>
+</div>
+<div class="upload-box">
+    <button class="upload-btn">Upload Image</button>
+    <p class="upload-text">or drop a file, <br> paste image or <a href="#">URL</a></p>
+</div>
+<section class="quality-section">
+    <h2>Stunning Quality</h2>
+    <div class="categories">
+        <button class="category active">People</button>
+        <button class="category">Products</button>
+        <button class="category">Animals</button>
+        <button class="category">Cars</button>
+        <button class="category">Graphics</button>
+    </div>
+</section>
+<section class="comparison-section">
+    <div class="comparison-container">
+        <div class="comparison-image">
+            <img src="https://sb.kaleidousercontent.com/67418/992x558/7632960ff9/people.png" alt="Before" class="before">
+            <img src="https://sb.kaleidousercontent.com/67418/992x558/7632960ff9/people.png" alt="After" class="after">
+            <div class="slider"></div>
+        </div>
+    </div>
+    <a href="#" class="see-more">See more samples →</a>
+</section>
+<section class="ai-info-section">
+    <div class="ai-info-container">
+        <div class="ai-text">
+            <h2>Remove backgrounds 100% automatically in 5 seconds with one click</h2>
+            <p>
+                Thanks to remove.bg's clever AI, you can slash editing time – and have more fun!
+            </p>
+            <p>
+                No matter if you want to make a background transparent (PNG), add a white background to a photo,
+                <strong>extract or isolate the subject, or get the cutout of a photo</strong> – you can do all this and more
+                with remove.bg, the AI background remover for professionals.
+            </p>
+        </div>
+        <div class="ai-image">
+            <img src="https://sb.kaleidousercontent.com/67418/658x756/361846cee7/all-pages-2.png" alt="AI Background Removal">
+        </div>
+    </div>
+</section>
+
+  <script src="remove.js"></script>
+</body>
+</html>
