@@ -1,77 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Navbar Toggle for Mobile
-    const navToggle = document.querySelector(".nav-toggle");
-    const navLinks = document.querySelector(".nav-links");
+document.getElementById("remove-bg-btn").addEventListener("click", async function () {
+    const fileInput = document.getElementById("upload");
+    const originalImg = document.getElementById("original-img");
+    const processedImg = document.getElementById("processed-img");
+    const downloadBtn = document.getElementById("download-btn");
 
-    if (navToggle) {
-        navToggle.addEventListener("click", function () {
-            navLinks.classList.toggle("active");
-        });
+    if (!fileInput.files.length) {
+        alert("Please select an image first!");
+        return;
     }
 
-    // Dropdown Handling
-    const dropdowns = document.querySelectorAll(".dropdown");
-    dropdowns.forEach((dropdown) => {
-        dropdown.addEventListener("mouseenter", function () {
-            this.querySelector(".dropdown-menu").style.display = "block";
+    const file = fileInput.files[0];
+    const formData = new FormData();
+    formData.append("image_file", file);
+    formData.append("size", "auto");
+
+    originalImg.src = URL.createObjectURL(file);
+
+    try {
+        const response = await fetch("https://api.remove.bg/v1.0/removebg", {
+            method: "POST",
+            headers: { "X-Api-Key": "dC297TUxJErRNNLzKZopnj32" },
+            body: formData
         });
 
-        dropdown.addEventListener("mouseleave", function () {
-            this.querySelector(".dropdown-menu").style.display = "none";
-        });
-    });
+        if (!response.ok) {
+            throw new Error("Failed to remove background.");
+        }
 
-    // Image Selection Handling
-    const sampleImages = document.querySelectorAll(".image-list img");
-    sampleImages.forEach((img) => {
-        img.addEventListener("click", function () {
-            alert("You selected an image!");
-        });
-    });
+        const blob = await response.blob();
+        const imageUrl = URL.createObjectURL(blob);
+        processedImg.src = imageUrl;
+        downloadBtn.href = imageUrl;
+        downloadBtn.classList.remove("hidden");
 
-    // File Upload Handling
-    const uploadButton = document.querySelector(".upload-btn");
-    if (uploadButton) {
-        uploadButton.addEventListener("click", function () {
-            const input = document.createElement("input");
-            input.type = "file";
-            input.accept = "image/*";
-            input.click();
-
-            input.addEventListener("change", function () {
-                if (input.files.length > 0) {
-                    alert("File uploaded: " + input.files[0].name);
-                }
-            });
-        });
-    }
-
-    // Before/After Image Slider
-    const slider = document.querySelector(".slider");
-    const beforeImage = document.querySelector(".comparison-image .after");
-
-    if (slider && beforeImage) {
-        let isDragging = false;
-
-        slider.addEventListener("mousedown", function (e) {
-            isDragging = true;
-        });
-
-        document.addEventListener("mouseup", function () {
-            isDragging = false;
-        });
-
-        document.addEventListener("mousemove", function (e) {
-            if (isDragging) {
-                let sliderRect = slider.parentElement.getBoundingClientRect();
-                let position = ((e.pageX - sliderRect.left) / sliderRect.width) * 100;
-
-                if (position > 100) position = 100;
-                if (position < 0) position = 0;
-
-                beforeImage.style.width = position + "%";
-                slider.style.left = position + "%";
-            }
-        });
+    } catch (error) {
+        alert("Error: " + error.message);
     }
 });
